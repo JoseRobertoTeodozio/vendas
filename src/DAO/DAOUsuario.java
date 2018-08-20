@@ -50,8 +50,7 @@ public class DAOUsuario extends ConexaoMySql {
             this.conectar();
             this.executarSQL(
                     "SELECT id_usuario, usu_nome, usu_login, usu_senha FROM tbl_usuario"
-                            + " WHERE id_usuario = "+pIdUsuario
-                   
+                    + " WHERE id_usuario = " + pIdUsuario
             );
 
             while (this.getResultSet().next()) {
@@ -135,6 +134,29 @@ public class DAOUsuario extends ConexaoMySql {
                     + "id_usuario = '" + pIdUsuario + "'"
                     + ";"
             );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
+    }
+
+    //Validar login e senha do usuário
+    public boolean getValidarUsuario(ModelUsuario musuario) {
+
+        try {
+            this.conectar();
+            this.executarSQL(
+                    "SELECT id_usuario, usu_nome, usu_login, usu_senha FROM tbl_usuario WHERE"
+                    + " usu_login = '" +musuario.getLogin() + "' AND usu_senha = '" +musuario.getSenha()+ "'"
+                    + ";"
+            );
+            if (getResultSet().next()) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;

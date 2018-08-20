@@ -7,6 +7,7 @@ package View;
 
 import Controller.ControllerUsuario;
 import Model.ModelUsuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -140,8 +141,13 @@ public class ViewLogin extends javax.swing.JFrame {
     private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
         // TODO add your handling code here:
         musuario.setLogin(jtfUsuario.getText());
-        musuario.setSenha(jtfSenha.getText());
-        cusuario.getValidarUsuarioController(musuario);
+        musuario.setSenha(String.valueOf(jtfSenha.getPassword()));
+        
+        if (cusuario.getValidarUsuarioController(musuario)) {
+            new ViewPrincipal().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuário e/ou senha inválido!"," ATENÇÂO ",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     /**
