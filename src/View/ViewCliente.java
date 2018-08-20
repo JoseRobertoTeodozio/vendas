@@ -121,7 +121,6 @@ public class ViewCliente extends javax.swing.JFrame {
         }
         jftTelefone.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
-        jtTabelaCliente.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jtTabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
