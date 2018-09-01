@@ -44,7 +44,7 @@ public class ViewVenda extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfCodigoCliente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jcbCliente = new componentes.UJComboBox();
         jLabel3 = new javax.swing.JLabel();
@@ -80,7 +80,23 @@ public class ViewVenda extends javax.swing.JFrame {
 
         jLabel1.setText("Código Cliente");
 
+        jtfCodigoCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfCodigoClienteFocusLost(evt);
+            }
+        });
+
         jLabel2.setText("Nome do Cliente");
+
+        jcbCliente.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jcbClientePopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
 
         jLabel3.setText("Número da venda");
 
@@ -160,7 +176,7 @@ public class ViewVenda extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jtfCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jcbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -206,7 +222,7 @@ public class ViewVenda extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -350,6 +366,20 @@ public class ViewVenda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtfCodigoClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCodigoClienteFocusLost
+        // TODO add your handling code here:
+        mcliente = ccliente.getClienteController(Integer.parseInt(jtfCodigoCliente.getText()));
+        jcbCliente.setSelectedItem(mcliente.getCliNome());
+    }//GEN-LAST:event_jtfCodigoClienteFocusLost
+
+    private void jcbClientePopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbClientePopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+        if (jcbCliente.isPopupVisible()) {
+            mcliente = ccliente.getClienteController(jcbCliente.getSelectedItem().toString());
+        } else {
+        }
+    }//GEN-LAST:event_jcbClientePopupMenuWillBecomeInvisible
+
     /**
      * @param args the command line arguments
      */
@@ -425,7 +455,6 @@ public class ViewVenda extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -436,5 +465,6 @@ public class ViewVenda extends javax.swing.JFrame {
     private componentes.UJComboBox jcbProduto;
     private javax.swing.JTable jtProdutosVenda;
     private javax.swing.JTable jtVendas;
+    private javax.swing.JTextField jtfCodigoCliente;
     // End of variables declaration//GEN-END:variables
 }

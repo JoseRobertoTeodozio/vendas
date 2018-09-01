@@ -89,7 +89,7 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jTextField1" min="-2" pref="69" max="-2" attributes="0"/>
+                                              <Component id="jtfCodigoCliente" min="-2" pref="69" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jcbCliente" min="-2" pref="438" max="-2" attributes="0"/>
                                           </Group>
@@ -149,7 +149,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfCodigoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jcbCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -199,7 +199,10 @@
                 <Property name="text" type="java.lang.String" value="C&#xf3;digo Cliente"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="jtfCodigoCliente">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfCodigoClienteFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
@@ -207,6 +210,9 @@
               </Properties>
             </Component>
             <Component class="componentes.UJComboBox" name="jcbCliente">
+              <Events>
+                <EventHandler event="popupMenuWillBecomeInvisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="jcbClientePopupMenuWillBecomeInvisible"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
