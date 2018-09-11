@@ -51,6 +51,7 @@ public class DAOCliente extends ConexaoMySql {
     * @param pIdCliente
     * return ModelCliente
     */
+    
     public ModelCliente getClienteDAO(int pIdCliente){
         ModelCliente modelCliente = new ModelCliente();
         try {
@@ -69,6 +70,45 @@ public class DAOCliente extends ConexaoMySql {
                      + " tbl_clientes"
                  + " WHERE"
                      + " id_cliente = '" + pIdCliente + "'"
+                + ";"
+            );
+
+            while(this.getResultSet().next()){
+                modelCliente.setIdCliente(this.getResultSet().getInt(1));
+                modelCliente.setCliNome(this.getResultSet().getString(2));
+                modelCliente.setCliEndereco(this.getResultSet().getString(3));
+                modelCliente.setCliBairro(this.getResultSet().getString(4));
+                modelCliente.setCliCidade(this.getResultSet().getString(5));
+                modelCliente.setCliUF(this.getResultSet().getString(6));
+                modelCliente.setCliCep(this.getResultSet().getString(7));
+                modelCliente.setCliTelefone(this.getResultSet().getString(8));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            this.fecharConexao();
+        }
+        return modelCliente;
+    }
+
+    public ModelCliente getClienteDAO(String pNomeCliente){
+        ModelCliente modelCliente = new ModelCliente();
+        try {
+            this.conectar();
+            this.executarSQL(
+                "SELECT "
+                    + "id_cliente,"
+                    + "cli_nome,"
+                    + "cli_endereco,"
+                    + "cli_bairro,"
+                    + "cli_cidade,"
+                    + "cli_uf,"
+                    + "cli_cep,"
+                    + "cli_telefone"
+                 + " FROM"
+                     + " tbl_clientes"
+                 + " WHERE"
+                     + " cli_nome = '" + pNomeCliente + "'"
                 + ";"
             );
 

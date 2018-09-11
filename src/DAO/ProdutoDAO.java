@@ -55,13 +55,35 @@ public class ProdutoDAO extends ConexaoMySql {
         }
     }
 
-//    retornar um produto
+    //retornar um produto
     public ModelProduto retornaProduto(int idProduto) {
         ModelProduto produto = new ModelProduto();
         try {
             this.conectar();
             this.executarSQL("SELECT id_produto, pro_nome, pro_valor, pro_estoque "
                     + "FROM tbl_produto WHERE id_produto = '" + idProduto + "'");
+
+            while (this.getResultSet().next()) {
+                produto.setIdProduto(this.getResultSet().getInt(1));
+                produto.setProNome(this.getResultSet().getString(2));
+                produto.setValor(this.getResultSet().getDouble(3));
+                produto.setEstoque(this.getResultSet().getInt(4));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            this.fecharConexao();
+        }
+        return produto;
+    }
+    
+    //retornar um produto
+    public ModelProduto retornaProduto(String nomeProduto) {
+        ModelProduto produto = new ModelProduto();
+        try {
+            this.conectar();
+            this.executarSQL("SELECT id_produto, pro_nome, pro_valor, pro_estoque "
+                    + "FROM tbl_produto WHERE pro_nome = '" + nomeProduto + "'");
 
             while (this.getResultSet().next()) {
                 produto.setIdProduto(this.getResultSet().getInt(1));

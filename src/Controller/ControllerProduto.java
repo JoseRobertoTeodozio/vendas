@@ -22,9 +22,13 @@ public class ControllerProduto {
         return this.dao.alterarProduto(produto);
     }
     
-    // retornar um produto
+    // retornar um produto pelo código
     public ModelProduto retornarProdutoController(int codigo){
         return this.dao.retornaProduto(codigo);
+    }
+    // retornar um produto pelo nome
+    public ModelProduto retornarProdutoController(String nomeProduto){
+        return this.dao.retornaProduto(nomeProduto);
     }
     
     //retornar uma lista de produtos
