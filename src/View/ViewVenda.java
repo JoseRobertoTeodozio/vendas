@@ -72,7 +72,7 @@ public class ViewVenda extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtVendas = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -286,10 +286,7 @@ public class ViewVenda extends javax.swing.JFrame {
 
         jtVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Código", "Nome do Cliente", "Data"
@@ -313,8 +310,13 @@ public class ViewVenda extends javax.swing.JFrame {
             jtVendas.getColumnModel().getColumn(2).setMaxWidth(110);
         }
 
-        jButton6.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
-        jButton6.setText("Excluir");
+        btnExcluir.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
         jButton7.setText("Alterar");
@@ -335,14 +337,14 @@ public class ViewVenda extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton5))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton6)
+                                .addComponent(btnExcluir)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton7)))
                         .addGap(0, 221, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, jButton6, jButton7});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnExcluir, jButton5, jButton7});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,12 +359,12 @@ public class ViewVenda extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
+                    .addComponent(btnExcluir)
                     .addComponent(jButton7))
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton5, jButton6, jButton7});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnExcluir, jButton5, jButton7});
 
         jTabbedPane1.addTab("Consultar/Excluir/Alterar", jPanel2);
 
@@ -410,6 +412,12 @@ public class ViewVenda extends javax.swing.JFrame {
         mproduto = cproduto.retornarProdutoController(Integer.parseInt(jtfCodigoProduto.getText()));
         jcbProduto.setSelectedItem(mproduto.getProNome());
     }//GEN-LAST:event_jtfCodigoProdutoFocusLost
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        int linha = jtVendas.getSelectedRow();
+        int codigo = (int) jtVendas.getValueAt(linha, 0);
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,12 +473,12 @@ public class ViewVenda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
