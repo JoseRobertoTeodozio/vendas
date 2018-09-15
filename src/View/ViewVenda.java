@@ -34,6 +34,8 @@ public class ViewVenda extends javax.swing.JFrame {
         listarClientes();
         listarProdutos();
         setLocationRelativeTo(null);
+        
+        
     }
 
     /**
