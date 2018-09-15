@@ -19,14 +19,12 @@ public class DAOVenda extends ConexaoMySql {
             this.conectar();
             return this.insertSQL(
                 "INSERT INTO tbl_vendas ("
-                    + "id_vendas,"
                     + "id_cliente,"
                     + "ven_data_venda,"
                     + "ven_valor,"
                     + "ven_valor_total,"
                     + "ven_desconto"
                 + ") VALUES ("
-                    + "'" + pModelVenda.getIdVenda() + "',"
                     + "'" + pModelVenda.getIdCliente() + "',"
                     + "'" + pModelVenda.getDataVenda() + "',"
                     + "'" + pModelVenda.getValor() + "',"

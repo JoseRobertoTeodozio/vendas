@@ -19,13 +19,11 @@ public class DAOVendasProduto extends ConexaoMySql {
             this.conectar();
             return this.insertSQL(
                 "INSERT INTO tbl_vendas_produto ("
-                    + "pk_id_venda_produto,"
-                    + "fk_produto,"
-                    + "fk_vendas,"
+                    + "id_produto,"
+                    + "id_vendas,"
                     + "ven_pro_valor,"
                     + "ven_pro_quantidade"
                 + ") VALUES ("
-                    + "'" + pModelVendasProduto.getIdVendaProduto() + "',"
                     + "'" + pModelVendasProduto.getProduto() + "',"
                     + "'" + pModelVendasProduto.getVendas() + "',"
                     + "'" + pModelVendasProduto.getVenProValor() + "',"

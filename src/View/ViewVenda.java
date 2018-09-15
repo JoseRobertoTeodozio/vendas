@@ -7,9 +7,11 @@ package View;
 
 import Controller.ControllerCliente;
 import Controller.ControllerProduto;
+import Controller.ControllerVenda;
 import Model.ModelCliente;
 import Model.ModelProduto;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +24,7 @@ public class ViewVenda extends javax.swing.JFrame {
     ControllerProduto cproduto = new ControllerProduto();
     ModelProduto mproduto = new ModelProduto();
     ArrayList<ModelProduto> listaModelProdutos = new ArrayList<>();
+    ControllerVenda controlerVenda = new ControllerVenda();
     
     /**
      * Creates new form ViewVenda
@@ -417,6 +420,12 @@ public class ViewVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
         int linha = jtVendas.getSelectedRow();
         int codigo = (int) jtVendas.getValueAt(linha, 0);
+        
+        if (controlerVenda.excluirVendaController(codigo)) {
+            JOptionPane.showMessageDialog(this, "Venda excluida com sucesso!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao excluir a venda", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
